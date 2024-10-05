@@ -1,14 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://l4lp43p4th1r"]
+[gd_scene load_steps=2 format=3 uid="uid://l4lp43p4th1r"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rk4d7"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_7rgvk"]
-material = SubResource("StandardMaterial3D_rk4d7")
+[sub_resource type="SphereMesh" id="SphereMesh_gg8cq"]
 
 [node name="Star" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.189314, 0.283288, 0.0550828)
 layers = 2
-mesh = SubResource("SphereMesh_7rgvk")
+mesh = SubResource("SphereMesh_gg8cq")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
 layers = 2
-light_energy = 16.0
+omni_range = 10.0
+omni_attenuation = 0.0
