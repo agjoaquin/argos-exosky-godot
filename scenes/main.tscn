@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/generator.gd" id="1_i2fq0"]
 [ext_resource type="PackedScene" uid="uid://l4lp43p4th1r" path="res://scenes/star.tscn" id="2_afkgs"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="3_pqr7o"]
+[ext_resource type="Script" path="res://addons/free_look_camera.gd" id="3_lwc6e"]
 
 [sub_resource type="Environment" id="Environment_f7ewi"]
 background_mode = 2
@@ -19,5 +19,4 @@ rstars = 200.0
 amount = 1000
 
 [node name="Camera3D" type="Camera3D" parent="."]
-script = ExtResource("3_pqr7o")
-rotation_speed = 1.0
+script = ExtResource("3_lwc6e")
