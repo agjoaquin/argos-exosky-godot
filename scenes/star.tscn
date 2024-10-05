@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://l4lp43p4th1r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rk4d7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7rgvk"]
+material = SubResource("StandardMaterial3D_rk4d7")
+
+[node name="Star" type="MeshInstance3D"]
+layers = 2
+mesh = SubResource("SphereMesh_7rgvk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+layers = 2
+light_energy = 16.0
