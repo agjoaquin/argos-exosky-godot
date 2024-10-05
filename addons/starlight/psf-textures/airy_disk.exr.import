@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chshso0qwrvam"
-path.bptc="res://.godot/imported/hst.exr-5e9ef979f509356537afe8359945917e.bptc.ctex"
+uid="uid://ddtuu2s4n5yhg"
+path.bptc="res://.godot/imported/airy_disk.exr-b9f64359f213ec2ffaf105127df9ee4e.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://starlight/psf-textures/hst.exr"
-dest_files=["res://.godot/imported/hst.exr-5e9ef979f509356537afe8359945917e.bptc.ctex"]
+source_file="res://addons/starlight/psf-textures/airy_disk.exr"
+dest_files=["res://.godot/imported/airy_disk.exr-b9f64359f213ec2ffaf105127df9ee4e.bptc.ctex"]
 
 [params]
 

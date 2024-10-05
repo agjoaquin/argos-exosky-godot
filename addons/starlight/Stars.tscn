@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/starlight/StarManager.gd" id="1_u877o"]
 [ext_resource type="Shader" path="res://addons/starlight/Star.gdshader" id="2_6rhhm"]
-[ext_resource type="Texture2D" uid="uid://cweg0rded3pvf" path="res://starlight/psf-textures/jwst.exr" id="3_wqe40"]
+[ext_resource type="Texture2D" uid="uid://cweg0rded3pvf" path="res://addons/starlight/psf-textures/jwst.exr" id="3_wqe40"]
 
 [node name="Stars" type="Node3D"]
 script = ExtResource("1_u877o")

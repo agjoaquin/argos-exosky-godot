@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2xt52fqesev1"
-path.bptc="res://.godot/imported/hex_aperture.exr-23ad4e4dcc1d9bde73360dc61c08f1d9.bptc.ctex"
+uid="uid://cweg0rded3pvf"
+path="res://.godot/imported/jwst.exr-b928b74a092622d5fdb25b2212888fa8.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://starlight/psf-textures/hex_aperture.exr"
-dest_files=["res://.godot/imported/hex_aperture.exr-23ad4e4dcc1d9bde73360dc61c08f1d9.bptc.ctex"]
+source_file="res://addons/starlight/psf-textures/jwst.exr"
+dest_files=["res://.godot/imported/jwst.exr-b928b74a092622d5fdb25b2212888fa8.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
