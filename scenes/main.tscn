@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8qhitat3fwmt"]
+[gd_scene load_steps=6 format=3 uid="uid://c8qhitat3fwmt"]
 
 [ext_resource type="Script" path="res://scripts/generator.gd" id="1_i2fq0"]
 [ext_resource type="PackedScene" uid="uid://l4lp43p4th1r" path="res://scenes/star.tscn" id="2_afkgs"]
@@ -6,16 +6,21 @@
 
 [sub_resource type="Environment" id="Environment_f7ewi"]
 background_mode = 2
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fpeva"]
 
 [node name="Main" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f7ewi")
+camera_attributes = SubResource("CameraAttributesPractical_fpeva")
 
 [node name="generator" type="Node" parent="."]
 script = ExtResource("1_i2fq0")
 starsPrefab = ExtResource("2_afkgs")
-rstars = 100.0
+rstars = 50.0
 amount = 1000
 
 [node name="Camera3D" type="Camera3D" parent="."]

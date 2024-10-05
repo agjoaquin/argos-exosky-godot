@@ -15,7 +15,7 @@ func _ready() -> void:
 		var param = {
 			"phi" : randf_range(0.0, PI),
 			"theta" : randf_range(0.0, TAU),
-			"distance" : randf_range(100,5000)
+			"distance" : randf_range(0.5,100)
 		}
 		stars_param.append(param)
 	
