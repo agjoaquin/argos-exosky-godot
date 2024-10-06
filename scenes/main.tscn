@@ -1,12 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8qhitat3fwmt"]
+[gd_scene load_steps=23 format=3 uid="uid://c8qhitat3fwmt"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_64law"]
 [ext_resource type="Script" path="res://scripts/space.gd" id="2_eua3t"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="2_s3r80"]
+[ext_resource type="Texture2D" uid="uid://bfq6ugng7ci0k" path="res://assets/Backgroud.png" id="2_svk2u"]
 [ext_resource type="Script" path="res://addons/free_look_camera.gd" id="3_lwc6e"]
 [ext_resource type="Script" path="res://scripts/stars_generator.gd" id="4_ewjt0"]
 [ext_resource type="Script" path="res://scripts/star_data_reader.gd" id="5_i800h"]
 [ext_resource type="Script" path="res://scripts/constellation_editor.gd" id="6_0fq35"]
+[ext_resource type="Script" path="res://scripts/user_interface.gd" id="9_f25gg"]
+[ext_resource type="Texture2D" uid="uid://bowj8bs6xilck" path="res://assets/Menu.png" id="9_tvk52"]
+[ext_resource type="Texture2D" uid="uid://cjw8usgmxgbl2" path="res://assets/Recurso 15.png" id="11_0jene"]
+[ext_resource type="Texture2D" uid="uid://dpc8lhvps8dfg" path="res://assets/Recurso 11.png" id="12_08fxs"]
+[ext_resource type="Texture2D" uid="uid://dn14hvg0bcfwv" path="res://assets/Selector.png" id="13_q8bnu"]
+[ext_resource type="Texture2D" uid="uid://dx876msyplp8a" path="res://assets/Modo Foto.png" id="14_iic2x"]
+[ext_resource type="PackedScene" uid="uid://d16w6nurn35cm" path="res://UI/buttons_toggle.tscn" id="15_g7ubj"]
+[ext_resource type="Texture2D" uid="uid://dnjpq0e6t526n" path="res://assets/BotonActivar (2).png" id="16_okmcr"]
+[ext_resource type="Texture2D" uid="uid://braq0q54lggc0" path="res://assets/BotonDesactivar (2).png" id="17_vlufl"]
+[ext_resource type="Texture2D" uid="uid://dqp0362hsay5i" path="res://assets/BotonDibujar (2).png" id="18_cc2wn"]
+[ext_resource type="Texture2D" uid="uid://bfk2w5k0xjl77" path="res://assets/BotonBorrar (2).png" id="19_xbp7n"]
+[ext_resource type="Texture2D" uid="uid://bhcwppdhebb8v" path="res://assets/BotonGuardar (2).png" id="20_dwnad"]
 
 [sub_resource type="Environment" id="Environment_f7ewi"]
 background_mode = 2
@@ -18,9 +31,21 @@ ambient_light_energy = 0.0
 [node name="Main" type="Node"]
 script = ExtResource("1_64law")
 
+[node name="background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_svk2u")
+
 [node name="Space" type="SubViewportContainer" parent="."]
 anchors_preset = -1
-anchor_left = 0.1
+anchor_left = 0.2
 anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
@@ -28,7 +53,7 @@ script = ExtResource("2_eua3t")
 
 [node name="SubViewport" type="SubViewport" parent="Space"]
 handle_input_locally = false
-size = Vector2i(1036, 648)
+size = Vector2i(1536, 1080)
 render_target_update_mode = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Space/SubViewport"]
@@ -49,7 +74,7 @@ script = ExtResource("5_i800h")
 [node name="ConstellationEditor" type="SubViewportContainer" parent="."]
 visible = false
 anchors_preset = -1
-anchor_left = 0.1
+anchor_left = 0.2
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -59,7 +84,7 @@ script = ExtResource("6_0fq35")
 
 [node name="SubViewport" type="SubViewport" parent="ConstellationEditor"]
 handle_input_locally = false
-size = Vector2i(1036, 648)
+size = Vector2i(1536, 1080)
 render_target_update_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ConstellationEditor/SubViewport"]
@@ -74,82 +99,122 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="ConstellationEditor/SubViewport/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Buttons" type="HBoxContainer" parent="ConstellationEditor/SubViewport/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 205
-alignment = 1
-
-[node name="CaptureButton" type="Button" parent="ConstellationEditor/SubViewport/VBoxContainer/Buttons"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Guardar captura"
-
-[node name="DrawButton" type="Button" parent="ConstellationEditor/SubViewport/VBoxContainer/Buttons"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Dibujar"
+stretch_mode = 4
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
-anchor_right = 0.1
+anchor_right = 0.2
 anchor_bottom = 1.0
 grow_vertical = 2
+script = ExtResource("9_f25gg")
 
-[node name="TextureRect" type="ColorRect" parent="UserInterface"]
+[node name="background" type="TextureRect" parent="UserInterface"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.124804, 0.0899187, 0.105458, 1)
+texture = ExtResource("9_tvk52")
+expand_mode = 1
 
-[node name="Title" type="Label" parent="UserInterface"]
+[node name="logos" type="HBoxContainer" parent="UserInterface"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -57.5
-offset_right = 57.5
-offset_bottom = 87.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 30
-text = "MODO 
-FOTO"
-horizontal_alignment = 1
-
-[node name="Buttons" type="VBoxContainer" parent="UserInterface"]
-layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.9
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 175
+grow_vertical = 0
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="ActivateButton" type="Button" parent="UserInterface/Buttons"]
+[node name="Nasa" type="TextureRect" parent="UserInterface/logos"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "ACTIVAR"
+texture = ExtResource("11_0jene")
+stretch_mode = 3
 
-[node name="DesactivateButton" type="Button" parent="UserInterface/Buttons"]
+[node name="ARGOS" type="TextureRect" parent="UserInterface/logos"]
 layout_mode = 2
-text = "DESACTIVAR"
+texture = ExtResource("12_08fxs")
+stretch_mode = 3
 
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2(213.271, -59.7583)
-scale = Vector2(0.36715, 1.42083)
-closed = true
-width = 3.0
-default_color = Color(0, 0.4, 1, 0.494118)
-begin_cap_mode = 2
+[node name="Menu1" type="Control" parent="UserInterface"]
+layout_mode = 1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.4
+grow_horizontal = 2
 
-[connection signal="pressed" from="ConstellationEditor/SubViewport/VBoxContainer/Buttons/CaptureButton" to="ConstellationEditor" method="_on_capture_button_pressed"]
-[connection signal="pressed" from="ConstellationEditor/SubViewport/VBoxContainer/Buttons/DrawButton" to="ConstellationEditor" method="_on_draw_button_pressed"]
-[connection signal="pressed" from="UserInterface/Buttons/ActivateButton" to="." method="_on_activate_button_pressed"]
-[connection signal="pressed" from="UserInterface/Buttons/DesactivateButton" to="." method="_on_desactivate_button_pressed"]
+[node name="TextureRect" type="TextureRect" parent="UserInterface/Menu1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.3
+texture = ExtResource("13_q8bnu")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/Menu1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Menu1/ScrollContainer"]
+layout_mode = 2
+
+[node name="Menu2" type="Control" parent="UserInterface"]
+layout_mode = 1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.9
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface/Menu2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.3
+texture = ExtResource("14_iic2x")
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/Menu2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Menu2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ButtonsToggle" parent="UserInterface/Menu2/ScrollContainer/VBoxContainer" instance=ExtResource("15_g7ubj")]
+layout_mode = 2
+texture_normal = ExtResource("16_okmcr")
+stretch_mode = 3
+texture1 = ExtResource("16_okmcr")
+texture2 = ExtResource("17_vlufl")
+
+[node name="ButtonsToggle2" parent="UserInterface/Menu2/ScrollContainer/VBoxContainer" instance=ExtResource("15_g7ubj")]
+layout_mode = 2
+texture_normal = ExtResource("18_cc2wn")
+stretch_mode = 3
+texture1 = ExtResource("18_cc2wn")
+texture2 = ExtResource("19_xbp7n")
+
+[node name="TextureButton" type="TextureButton" parent="UserInterface/Menu2/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("20_dwnad")
+
+[connection signal="pressed" from="UserInterface/Menu2/ScrollContainer/VBoxContainer/ButtonsToggle" to="." method="_on_buttons_toggle_pressed"]
+[connection signal="pressed" from="UserInterface/Menu2/ScrollContainer/VBoxContainer/ButtonsToggle2" to="ConstellationEditor" method="_on_draw_button_pressed"]
+[connection signal="pressed" from="UserInterface/Menu2/ScrollContainer/VBoxContainer/TextureButton" to="ConstellationEditor" method="_on_capture_button_pressed"]

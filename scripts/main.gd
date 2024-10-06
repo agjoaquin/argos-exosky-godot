@@ -7,7 +7,7 @@ extends Node
 @onready var space: SubViewportContainer = $Space
 
 
-var path = "res://data/Kepler-1996-C.txt"
+var path = "res://data/Mapa_De_Estrellas.txt"
 
 func _ready() -> void:
 	# Leo el archivo
@@ -17,11 +17,11 @@ func _ready() -> void:
 	stars_generator.generate(params)
 
 
-func _on_activate_button_pressed() -> void:
-	var texture = space.get_texture()
-	constellation_editor.set_texture(texture)
-	constellation_editor.show()
-
-
-func _on_desactivate_button_pressed() -> void:
-	constellation_editor.hide()
+func _on_buttons_toggle_pressed() -> void:
+	if constellation_editor.visible : 
+		constellation_editor.hide()
+	
+	else:
+		var texture = space.get_texture()
+		constellation_editor.set_texture(texture)
+		constellation_editor.show()
