@@ -17,17 +17,29 @@ ambient_light_energy = 0.0
 [node name="Main" type="Node"]
 script = ExtResource("1_64law")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Space" type="SubViewportContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Space"]
+size = Vector2i(1036, 648)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Space/SubViewport"]
 environment = SubResource("Environment_f7ewi")
 camera_attributes = SubResource("CameraAttributesPractical_fpeva")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="Space/SubViewport"]
 script = ExtResource("3_lwc6e")
 
-[node name="Stars" parent="." instance=ExtResource("2_s3r80")]
+[node name="Stars" parent="Space/SubViewport" instance=ExtResource("2_s3r80")]
+unique_name_in_owner = true
 script = ExtResource("4_ewjt0")
 
-[node name="StarDataReader" type="Node" parent="."]
+[node name="StarDataReader" type="Node" parent="Space/SubViewport"]
+unique_name_in_owner = true
 script = ExtResource("5_i800h")
 
 [node name="ConstellationEditor" type="SubViewportContainer" parent="."]
@@ -45,11 +57,43 @@ handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="ConstellationEditor/SubViewport"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ConstellationEditor/SubViewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[connection signal="visibility_changed" from="ConstellationEditor" to="ConstellationEditor" method="_on_visibility_changed"]
+[node name="TextureRect" type="TextureRect" parent="ConstellationEditor/SubViewport/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="ConstellationEditor/SubViewport/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 205
+alignment = 1
+
+[node name="Button" type="Button" parent="ConstellationEditor/SubViewport/VBoxContainer/Buttons"]
+layout_mode = 2
+text = "guardar captura"
+
+[node name="Button2" type="Button" parent="ConstellationEditor/SubViewport/VBoxContainer/Buttons"]
+layout_mode = 2
+text = "dibujar"
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.1
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="TextureRect" type="ColorRect" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.124804, 0.0899187, 0.105458, 1)

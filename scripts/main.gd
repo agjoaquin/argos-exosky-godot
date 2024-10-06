@@ -1,7 +1,7 @@
 extends Node
 
-@onready var star_data_reader: StarDataReader = $StarDataReader
-@onready var stars_generator: StarsGenerator = $Stars
+@onready var stars_generator: StarsGenerator = %Stars
+@onready var star_data_reader: StarDataReader = %StarDataReader
 
 
 var path = "res://test.txt"
