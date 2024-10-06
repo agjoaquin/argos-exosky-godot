@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8qhitat3fwmt"]
+[gd_scene load_steps=9 format=3 uid="uid://c8qhitat3fwmt"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_64law"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="2_s3r80"]
 [ext_resource type="Script" path="res://addons/free_look_camera.gd" id="3_lwc6e"]
 [ext_resource type="Script" path="res://scripts/stars_generator.gd" id="4_ewjt0"]
 [ext_resource type="Script" path="res://scripts/star_data_reader.gd" id="5_i800h"]
+[ext_resource type="Script" path="res://scripts/constellation_editor.gd" id="6_0fq35"]
 
 [sub_resource type="Environment" id="Environment_f7ewi"]
 background_mode = 2
@@ -28,3 +29,27 @@ script = ExtResource("4_ewjt0")
 
 [node name="StarDataReader" type="Node" parent="."]
 script = ExtResource("5_i800h")
+
+[node name="ConstellationEditor" type="SubViewportContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+script = ExtResource("6_0fq35")
+
+[node name="SubViewport" type="SubViewport" parent="ConstellationEditor"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="ConstellationEditor/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="visibility_changed" from="ConstellationEditor" to="ConstellationEditor" method="_on_visibility_changed"]
