@@ -47,6 +47,8 @@ class RangeF:
 		return (max - min) * value + min
 
 
+
+
 class StarClass:
 	var weight: int
 	var stellar_class: String
@@ -60,6 +62,7 @@ class StarClass:
 		self.temp_range = dict.temp_range
 		self.luminosity_range = dict.luminosity_range
 		self.mass_range = dict.mass_range
+		
 
 	func sample(value: float):
 		return {
@@ -162,8 +165,63 @@ func random_category(rng: RandomNumberGenerator):
 		sum += category.weight;
 		if weight <= sum:
 			return category
+# Arranca acá
+class ParamsStar:
+	var posicion : Vector3
+	var luminosidad : float
+	var temperatura : float
+	func _init(dict: Dictionary):
+		self.posicion = dict.posicion
+		self.luminosidad = dict.luminosidad
+		self.temperatura = dict.temperatura
+#
+#func read_vector_from_file(text_file_path):
+	#var file = FileAccess.open(text_file_path, FileAccess.READ)
+	## Abre el archivo en modo lectura
+	#if file.file_exists(text_file_path):
+		#var content = file.get_line()  # Lee la primera línea del archivo
+		## Convierte el contenido a un vector
+		#var values = content.split(",")
+		#var vector = Vector3(values[0].to_float(),values[1].to_float(),values[2].to_float())
+		#var star = ParamsStar.new({
+			#posicion = vector,
+			#luminosidad = values[3].to_float(),
+			#temperatura = values[4].to_float(),
+			#})
+		#file.close()
+		#return star
+	#else:
+		#print("Archivo no encontrado: ", text_file_path)
+		#var starVoid = ParamsStar.new({posicion = Vector3.ZERO,luminosidad = 0,temperatura = 0,})
+		#return starVoid  # Devuelve un Vector3 vacío si el archivo no existe
+
+func read_vectors_from_file(text_file_path):
+	var stars = []  # Lista para almacenar todas las estrellas
+	var file = FileAccess.open(text_file_path, FileAccess.READ)
+
+	if file:
+		# Leer línea por línea del archivo
+		while not file.eof_reached():
+			var content = file.get_line().strip_edges()  # Lee la línea actual y elimina espacios innecesarios
+			
+			# Si la línea no está vacía
+			if content != "":
+				var values = content.split(",")  # Divide la línea en elementos usando la coma como delimitador
+				var vector = Vector3(values[0].to_float(), values[1].to_float(), values[2].to_float())
+				
+				# Crear un nuevo objeto ParamsStar
+				var star = ParamsStar.new({posicion = vector,luminosidad = values[3].to_float(),temperatura = values[4].to_float(),})           
+				# Agregar la estrella a la lista
+				stars.append(star)
+				
+		file.close()
+	else:
+		print("Archivo no encontrado: ", text_file_path)
+		
+	return stars  # Devuelve la lista de objetos ParamsStar
 
 
+# Termina acá
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not _regenerate:
@@ -175,16 +233,21 @@ func _process(delta):
 	rng.seed = rng_seed
 
 	var stars: Array[Star] = []
+	var text_file_path = "res://data/Test.txt"
+	var vectorTest = read_vectors_from_file(text_file_path)
+	for i in range(0, 3):
+		var testVar = Star.new(vectorTest[i].posicion,vectorTest[i].luminosidad,vectorTest[i].temperatura) 
+		stars.push_back(testVar)
+	
+	
+	# if generate_at_origin:
+	#	stars.push_back(class_G.get_star(Vector3.ZERO, 0.5))
 
-	if generate_at_origin:
-		stars.push_back(class_G.get_star(Vector3.ZERO, 0.5))
-
-	for i in range(0, star_count):
-		var category = random_category(rng)
-		if not category:
-			continue
-
-		stars.push_back(category.get_star(sample_sphere(rng, size), rng.randf()))
+	#for i in range(0, star_count):
+		#var category = random_category(rng)
+		#if not category:
+			#continue
+		#stars.push_back(category.get_star(sample_sphere(rng, size), rng.randf()))
 
 	set_star_list(stars)
 
