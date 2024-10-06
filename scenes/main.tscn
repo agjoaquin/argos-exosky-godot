@@ -141,14 +141,6 @@ text = "ACTIVAR"
 layout_mode = 2
 text = "DESACTIVAR"
 
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2(213.271, -59.7583)
-scale = Vector2(0.36715, 1.42083)
-closed = true
-width = 3.0
-default_color = Color(0, 0.4, 1, 0.494118)
-begin_cap_mode = 2
-
 [connection signal="pressed" from="ConstellationEditor/SubViewport/VBoxContainer/Buttons/CaptureButton" to="ConstellationEditor" method="_on_capture_button_pressed"]
 [connection signal="pressed" from="ConstellationEditor/SubViewport/VBoxContainer/Buttons/DrawButton" to="ConstellationEditor" method="_on_draw_button_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/ActivateButton" to="." method="_on_activate_button_pressed"]

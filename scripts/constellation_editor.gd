@@ -20,13 +20,18 @@ func _input(event: InputEvent) -> void:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT:
 					if event.pressed:
-						print("event.position",event.position)
-						print("")
+						print("event.position ",event.position)
 						line.width = 2
 						var color =  Color(0,0.4,3,0.5)
 						line.default_color = color
-						if event.position.x-135>0 and event.position.y<697:
-							line.add_point(Vector2(event.position.x-135,event.position.y))
+						var lateralBarWidth = get_tree().root.size.x - sub_viewport.size.x
+						print("lateralBarWidth ",lateralBarWidth)
+						print("")
+						var xCorrection = 02
+						print("xCorrection ",xCorrection)
+
+						if event.position.x-lateralBarWidth>xCorrection and event.position.y<600:
+							line.add_point(Vector2(event.position.x-lateralBarWidth,event.position.y))
 				#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if event.pressed else Input.MOUSE_MODE_VISIBLE)
 	
 	

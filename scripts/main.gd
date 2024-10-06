@@ -7,11 +7,14 @@ extends Node
 @onready var space: SubViewportContainer = $Space
 
 
-var path = "res://data/Kepler-1996-C.txt"
+var path = "res://data/Kepler-1983 b.txt"
 
 func _ready() -> void:
 	# Leo el archivo
 	var params = star_data_reader.read_params_star_from_file(path)
+	#var vectorcam = Vector3(148.7617277840847,-291.4328347200253,273.7041536508674)
+	var vectorcam = star_data_reader.get_cam_pos(path)
+	space.set_camera_position(vectorcam)
 	
 	# Creo las estrellas
 	stars_generator.generate(params)
