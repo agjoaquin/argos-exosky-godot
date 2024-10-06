@@ -1,7 +1,7 @@
 class_name StarDataReader extends Node
 
 func read_params_star_from_file(text_file_path):
-	var stars = []  # Lista para almacenar todas las estrellas
+	var stars : Array[ParamsStar] = []  # Lista para almacenar todas las estrellas
 	var file = FileAccess.open(text_file_path, FileAccess.READ)
 	if file:
 		# Leer línea por línea del archivo

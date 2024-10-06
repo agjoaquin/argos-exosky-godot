@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8qhitat3fwmt"]
+[gd_scene load_steps=8 format=3 uid="uid://c8qhitat3fwmt"]
 
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_64law"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="2_s3r80"]
 [ext_resource type="Script" path="res://addons/free_look_camera.gd" id="3_lwc6e"]
-[ext_resource type="Script" path="res://addons/starlight/StarGenerator.gd" id="3_sc5k0"]
+[ext_resource type="Script" path="res://scripts/stars_generator.gd" id="4_ewjt0"]
+[ext_resource type="Script" path="res://scripts/star_data_reader.gd" id="5_i800h"]
 
 [sub_resource type="Environment" id="Environment_f7ewi"]
 background_mode = 2
@@ -12,6 +14,7 @@ ambient_light_energy = 0.0
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fpeva"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_64law")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f7ewi")
@@ -21,8 +24,7 @@ camera_attributes = SubResource("CameraAttributesPractical_fpeva")
 script = ExtResource("3_lwc6e")
 
 [node name="Stars" parent="." instance=ExtResource("2_s3r80")]
-script = ExtResource("3_sc5k0")
-size = 500.0
-star_count = 10000
-rng_seed = 1234
-generate_at_origin = true
+script = ExtResource("4_ewjt0")
+
+[node name="StarDataReader" type="Node" parent="."]
+script = ExtResource("5_i800h")
