@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c8qhitat3fwmt"]
 
-[ext_resource type="PackedScene" path="res://addons/starlight/Stars.tscn" id="2_s3r80"]
+[ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="2_s3r80"]
 [ext_resource type="Script" path="res://addons/free_look_camera.gd" id="3_lwc6e"]
 [ext_resource type="Script" path="res://addons/starlight/StarGenerator.gd" id="3_sc5k0"]
 
@@ -22,7 +22,7 @@ script = ExtResource("3_lwc6e")
 
 [node name="Stars" parent="." instance=ExtResource("2_s3r80")]
 script = ExtResource("3_sc5k0")
-size = 50.0
-star_count = 30000
+size = 500.0
+star_count = 10000
 rng_seed = 1234
 generate_at_origin = true
