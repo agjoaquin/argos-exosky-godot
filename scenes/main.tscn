@@ -27,7 +27,9 @@ stretch = true
 script = ExtResource("2_eua3t")
 
 [node name="SubViewport" type="SubViewport" parent="Space"]
+handle_input_locally = false
 size = Vector2i(1036, 648)
+render_target_update_mode = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Space/SubViewport"]
 environment = SubResource("Environment_f7ewi")
@@ -84,12 +86,12 @@ alignment = 1
 [node name="CaptureButton" type="Button" parent="ConstellationEditor/SubViewport/VBoxContainer/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "guardar captura"
+text = "Guardar captura"
 
 [node name="DrawButton" type="Button" parent="ConstellationEditor/SubViewport/VBoxContainer/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "dibujar"
+text = "Dibujar"
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
@@ -139,6 +141,15 @@ text = "ACTIVAR"
 layout_mode = 2
 text = "DESACTIVAR"
 
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(213.271, -59.7583)
+scale = Vector2(0.36715, 1.42083)
+closed = true
+width = 3.0
+default_color = Color(0, 0.4, 1, 0.494118)
+begin_cap_mode = 2
+
 [connection signal="pressed" from="ConstellationEditor/SubViewport/VBoxContainer/Buttons/CaptureButton" to="ConstellationEditor" method="_on_capture_button_pressed"]
+[connection signal="pressed" from="ConstellationEditor/SubViewport/VBoxContainer/Buttons/DrawButton" to="ConstellationEditor" method="_on_draw_button_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/ActivateButton" to="." method="_on_activate_button_pressed"]
 [connection signal="pressed" from="UserInterface/Buttons/DesactivateButton" to="." method="_on_desactivate_button_pressed"]
