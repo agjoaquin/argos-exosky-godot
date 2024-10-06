@@ -7,7 +7,7 @@ extends Node
 @onready var space: SubViewportContainer = $Space
 
 
-var path = "res://Kepler-1996-C.txt"
+var path = "res://data/Kepler-1996-C.txt"
 
 func _ready() -> void:
 	# Leo el archivo
