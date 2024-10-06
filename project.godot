@@ -15,6 +15,14 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://addons/": "orange",
+"res://scenes/": "blue",
+"res://scripts/": "purple"
+}
+
 [layer_names]
 
 3d_render/layer_2="stars"
