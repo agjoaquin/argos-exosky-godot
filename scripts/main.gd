@@ -7,16 +7,6 @@ extends Node
 @onready var space: SubViewportContainer = $Space
 
 
-var path = "res://data/Mapa_De_Estrellas.txt"
-
-func _ready() -> void:
-	# Leo el archivo
-	var params = star_data_reader.read_params_star_from_file(path)
-	
-	# Creo las estrellas
-	stars_generator.generate(params)
-
-
 func _on_buttons_toggle_pressed() -> void:
 	if constellation_editor.visible : 
 		constellation_editor.hide()
@@ -25,3 +15,11 @@ func _on_buttons_toggle_pressed() -> void:
 		var texture = space.get_texture()
 		constellation_editor.set_texture(texture)
 		constellation_editor.show()
+
+
+func _on_planet_selector_set_planet(path: Variant) -> void:
+	# Leo el archivo
+	var params = star_data_reader.read_params_star_from_file(path)
+	
+	# Creo las estrellas
+	stars_generator.generate(params)

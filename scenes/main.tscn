@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c8qhitat3fwmt"]
+[gd_scene load_steps=24 format=3 uid="uid://c8qhitat3fwmt"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_64law"]
 [ext_resource type="Script" path="res://scripts/space.gd" id="2_eua3t"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dpc8lhvps8dfg" path="res://assets/Recurso 11.png" id="12_08fxs"]
 [ext_resource type="Texture2D" uid="uid://dn14hvg0bcfwv" path="res://assets/Selector.png" id="13_q8bnu"]
 [ext_resource type="Texture2D" uid="uid://dx876msyplp8a" path="res://assets/Modo Foto.png" id="14_iic2x"]
+[ext_resource type="PackedScene" uid="uid://ct3800nm2m55p" path="res://UI/planet_selector.tscn" id="14_lcf8p"]
 [ext_resource type="PackedScene" uid="uid://d16w6nurn35cm" path="res://UI/buttons_toggle.tscn" id="15_g7ubj"]
 [ext_resource type="Texture2D" uid="uid://dnjpq0e6t526n" path="res://assets/BotonActivar (2).png" id="16_okmcr"]
 [ext_resource type="Texture2D" uid="uid://braq0q54lggc0" path="res://assets/BotonDesactivar (2).png" id="17_vlufl"]
@@ -154,17 +155,9 @@ anchor_bottom = 0.3
 texture = ExtResource("13_q8bnu")
 stretch_mode = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/Menu1"]
+[node name="PlanetSelector" parent="UserInterface/Menu1" instance=ExtResource("14_lcf8p")]
 layout_mode = 1
-anchors_preset = -1
 anchor_top = 0.3
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Menu1/ScrollContainer"]
-layout_mode = 2
 
 [node name="Menu2" type="Control" parent="UserInterface"]
 layout_mode = 1
@@ -215,6 +208,7 @@ texture2 = ExtResource("19_xbp7n")
 layout_mode = 2
 texture_normal = ExtResource("20_dwnad")
 
+[connection signal="set_planet" from="UserInterface/Menu1/PlanetSelector" to="." method="_on_planet_selector_set_planet"]
 [connection signal="pressed" from="UserInterface/Menu2/ScrollContainer/VBoxContainer/ButtonsToggle" to="." method="_on_buttons_toggle_pressed"]
 [connection signal="pressed" from="UserInterface/Menu2/ScrollContainer/VBoxContainer/ButtonsToggle2" to="ConstellationEditor" method="_on_draw_button_pressed"]
 [connection signal="pressed" from="UserInterface/Menu2/ScrollContainer/VBoxContainer/TextureButton" to="ConstellationEditor" method="_on_capture_button_pressed"]
