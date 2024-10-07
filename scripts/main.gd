@@ -23,7 +23,7 @@ func _on_planet_selector_set_planet(path: Variant) -> void:
 	var camPos = star_data_reader.read_cam_pos(path)
 	
 	# seteo la posicion de camara
-	space.set_camera_position(camPos)
+	#space.set_camera_position(camPos)
 	
 	# Creo las estrellas
 	stars_generator.generate(params)
