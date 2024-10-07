@@ -20,6 +20,7 @@ func _on_buttons_toggle_pressed() -> void:
 func _on_planet_selector_set_planet(path: Variant) -> void:
 	# Leo el archivo
 	var params = star_data_reader.read_params_star_from_file(path)
+	var camPos = star_data_reader.read_cam_pos(path)
 	
 	# Creo las estrellas
 	stars_generator.generate(params)
