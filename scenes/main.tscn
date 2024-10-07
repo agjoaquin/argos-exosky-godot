@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bowj8bs6xilck" path="res://assets/Menu.png" id="9_tvk52"]
 [ext_resource type="Texture2D" uid="uid://cjw8usgmxgbl2" path="res://assets/Recurso 15.png" id="11_0jene"]
 [ext_resource type="Texture2D" uid="uid://dpc8lhvps8dfg" path="res://assets/Recurso 11.png" id="12_08fxs"]
-[ext_resource type="Texture2D" uid="uid://dn14hvg0bcfwv" path="res://assets/Selector.png" id="13_q8bnu"]
+[ext_resource type="Texture2D" uid="uid://dhl5avt4bkhnl" path="res://assets/Recurso 19.png" id="13_f8s88"]
 [ext_resource type="Texture2D" uid="uid://dx876msyplp8a" path="res://assets/Modo Foto.png" id="14_iic2x"]
 [ext_resource type="PackedScene" uid="uid://ct3800nm2m55p" path="res://UI/planet_selector.tscn" id="14_lcf8p"]
 [ext_resource type="PackedScene" uid="uid://d16w6nurn35cm" path="res://UI/buttons_toggle.tscn" id="15_g7ubj"]
@@ -88,18 +88,13 @@ handle_input_locally = false
 size = Vector2i(1536, 1080)
 render_target_update_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ConstellationEditor/SubViewport"]
+[node name="TextureRect" type="TextureRect" parent="ConstellationEditor/SubViewport"]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="ConstellationEditor/SubViewport/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
 stretch_mode = 4
 
 [node name="UserInterface" type="Control" parent="."]
@@ -151,13 +146,15 @@ grow_horizontal = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.3
-texture = ExtResource("13_q8bnu")
+anchor_bottom = 0.2
+texture = ExtResource("13_f8s88")
 stretch_mode = 5
 
 [node name="PlanetSelector" parent="UserInterface/Menu1" instance=ExtResource("14_lcf8p")]
 layout_mode = 1
-anchor_top = 0.3
+anchors_preset = -1
+anchor_top = 0.4
+alignment = 1
 
 [node name="Menu2" type="Control" parent="UserInterface"]
 layout_mode = 1
@@ -208,6 +205,7 @@ texture2 = ExtResource("19_xbp7n")
 layout_mode = 2
 texture_normal = ExtResource("20_dwnad")
 
+[connection signal="gui_input" from="ConstellationEditor/SubViewport/TextureRect" to="ConstellationEditor" method="_on_texture_rect_gui_input"]
 [connection signal="set_planet" from="UserInterface/Menu1/PlanetSelector" to="." method="_on_planet_selector_set_planet"]
 [connection signal="pressed" from="UserInterface/Menu2/ScrollContainer/VBoxContainer/ButtonsToggle" to="." method="_on_buttons_toggle_pressed"]
 [connection signal="pressed" from="UserInterface/Menu2/ScrollContainer/VBoxContainer/ButtonsToggle2" to="ConstellationEditor" method="_on_draw_button_pressed"]

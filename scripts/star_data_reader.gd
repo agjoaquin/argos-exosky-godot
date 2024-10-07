@@ -1,6 +1,6 @@
 class_name StarDataReader extends Node
 
-const SCALE = 8
+const SCALE = 30
 
 func read_params_star_from_file(text_file_path):
 	var stars : Array[ParamsStar] = []  # Lista para almacenar todas las estrellas

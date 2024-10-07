@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ct3800nm2m55p"]
+[gd_scene load_steps=4 format=3 uid="uid://ct3800nm2m55p"]
 
 [ext_resource type="Script" path="res://UI/planet_selector.gd" id="1_d5tab"]
 [ext_resource type="Texture2D" uid="uid://dfshpaoetu8nr" path="res://assets/Boton.png" id="2_g2kqw"]
+[ext_resource type="Texture2D" uid="uid://db1e7hvaj8ks6" path="res://assets/Recurso 20.png" id="3_q6d1f"]
 
 [node name="PlanetSelector" type="VBoxContainer"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -13,16 +14,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_d5tab")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
-
-[node name="Button1" type="TextureButton" parent="HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_g2kqw")
-stretch_mode = 0
-flip_h = true
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
@@ -31,16 +26,31 @@ text = "TEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button2" type="TextureButton" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Button1" type="TextureButton" parent="HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("2_g2kqw")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+
+[node name="Button2" type="TextureButton" parent="HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture_normal = ExtResource("2_g2kqw")
+ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="TextureButton" parent="."]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "CARGAR PLANETA"
+texture_normal = ExtResource("3_q6d1f")
+stretch_mode = 3
 
-[connection signal="pressed" from="HBoxContainer/Button1" to="." method="_on_button_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
