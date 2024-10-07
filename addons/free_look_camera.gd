@@ -10,6 +10,8 @@ extends Camera3D
 
 @onready var _velocity = default_velocity
 
+var move_active : bool = true
+
 func _input(event):
 	if not current:
 		return
@@ -30,7 +32,7 @@ func _input(event):
 				_velocity = clamp(_velocity / speed_scale, min_speed, max_speed)
 
 func _process(delta):
-	if not current:
+	if not current or not move_active:
 		return
 		
 	var direction = Vector3(
@@ -43,3 +45,7 @@ func _process(delta):
 		translate(direction * _velocity * delta * boost_speed_multiplier)
 	else:
 		translate(direction * _velocity * delta)
+
+
+func _on_check_box_toggled(toggled_on: bool) -> void:
+	move_active = toggled_on
